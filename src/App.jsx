@@ -12,9 +12,9 @@ function App() {
       <Suspense fallback={<h3>Countries is loading..</h3>}>
         <Countries countriesPromise={countriesPromise}></Countries>
       </Suspense>
-      <Suspense fallback={<h3>loading..</h3>}>
+      {/* <Suspense fallback={<h3>loading..</h3>}>
         <Country></Country>
-      </Suspense>
+      </Suspense> */}
     </>
   )
 }
