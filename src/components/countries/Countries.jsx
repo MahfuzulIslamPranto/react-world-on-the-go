@@ -5,6 +5,12 @@ import '../Country/Country.css'
 
 const Countries = ({countriesPromise}) => {
 
+    const [visitedFlags,setVisitedFlags] = useState([]);
+    const handleFlags = (flags) =>{
+        const newVisitedFlags = [...visitedFlags,flags];
+        setVisitedFlags(newVisitedFlags);
+    }
+
     const [visitedCountry,setVisitedCountry] = useState([]);
     const handleVisitedCountries = (country) =>{
         const newVisitedCountries = [...visitedCountry,country];
@@ -24,9 +30,15 @@ const Countries = ({countriesPromise}) => {
                     visitedCountry.map(country => <li key={country.ccn3.ccn3}>{country.name.common} </li>)
                 }
             </ol>
+            <p>Visited Countries Flag: {visitedFlags.length}</p>
+            <div className='btnn' className='grid'>
+                {
+                    visitedFlags.map((flag,index) => <img key={index} src={flag} alt="" />)
+                }
+            </div>
             <div className='grid'>
                 {
-                    countries.map(country => <Country key={country.ccn3.ccn3} country={country} handleVisitedCountries={handleVisitedCountries}></Country>)
+                    countries.map(country => <Country key={country.ccn3.ccn3} country={country} handleVisitedCountries={handleVisitedCountries} handleFlags={handleFlags}></Country>)
                 }
             </div>
         </div>
